@@ -1,0 +1,33 @@
+modules:
+  macro:
+    - key: customui-hello-world
+      resource: main
+      resolver:
+        function: resolver
+      title: SP Progress bar
+      icon: https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg
+      description: Allow users to add a progress bar.
+      config:
+        function: config-function
+  function:
+    - key: resolver
+      handler: index.handler
+    - key: config-function
+      handler: index.config
+resources:
+  - key: main
+    path: static/hello-world/build
+app:
+  id: ari:cloud:ecosystem::app/19a49962-1bbd-4f98-9549-9b4ee4c9d324
+permissions:
+  external:
+    images:
+      - 'https://spectrumgroupe-sfm.eu-west-3.elasticbeanstalk.com/images/progress-bar.png'
+      - 'https://developer.atlassian.com/platform/forge/images/issue-panel-icon.svg'
+  content:
+    styles:
+      - 'unsafe-inline'
+  scopes:
+    - read:confluence-content.summary
+    - read:confluence-props
+    - write:confluence-props
